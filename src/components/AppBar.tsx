@@ -41,7 +41,7 @@ export default function Appbar({ }) {
             variant={"h5"}
             style={{ fontWeight: "bold", color: "white" }}
           >
-            Coursera
+          Udemy
           </Typography>
         </div>
 
@@ -55,7 +55,7 @@ export default function Appbar({ }) {
                   borderRadius: "11%",
                 }}
                 onClick={() => {
-                  router.push("/addcourse");
+                  router.push("/addCourse");
                 }}
               >
                 Add course
@@ -116,7 +116,7 @@ export default function Appbar({ }) {
             variant={"h6"}
             style={{ fontWeight: "bold", color: "white" }}
           >
-            Coursera
+            Udemy
           </Typography>
         </div>
 

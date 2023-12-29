@@ -1,4 +1,5 @@
-import { Button, Card, Typography } from "@mui/material";
+import { Button, Card, Typography, IconButton } from "@mui/material";
+import DeleteIcon from "@mui/icons-material/Delete";
 import { useRouter } from "next/router";
 import axios from "axios";
 import { NextApiRequest } from "next";
@@ -43,7 +44,7 @@ function Course({ course }: { course: Course }) {
         Rs. {course.price}
       </Typography>
       <img src={course.imageLink} style={{ width: 300 }}></img>
-      <div style={{ display: "flex", justifyContent: "center", marginTop: 20 }}>
+      <div style={{ display: "flex", justifyContent: "space-between", marginTop: 20 }}>
         <Button
           variant="contained"
           size="large"
@@ -53,6 +54,23 @@ function Course({ course }: { course: Course }) {
         >
           Edit
         </Button>
+        <IconButton
+
+          onClick={() => {
+            axios
+              .delete(`/api/admin/course/${course._id}`)
+              .then(() => {
+                alert("Deleted course")
+                router.push("/courses");
+              })
+              .catch((e) => {
+                alert(e.response.data.message);
+              });
+          }}
+
+          style={{ color: 'red' }}>
+          <DeleteIcon />
+        </IconButton>
       </div>
     </Card>
   );
@@ -61,7 +79,7 @@ function Course({ course }: { course: Course }) {
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   const { req } = context;
   console.log(req.headers);
-  
+
   let apiUrl = "";
   if (req) {
     const host = req.headers?.host;

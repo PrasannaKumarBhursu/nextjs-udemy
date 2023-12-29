@@ -54,7 +54,7 @@ export default function Landing() {
         </Grid>
         <Grid item xs={12} md={6} lg={6} style={{ marginTop: 20 }}>
           <Image
-            src={"/class.jpeg"}
+            src={"/teaching.jpg"}
             alt="classteacher"
             width={790}
             height={400}
